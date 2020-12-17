@@ -42,7 +42,7 @@ router.get('/set-token-cookie', asyncHandler(async (req, res) => {
   return res.json({ user });
 }));
 
-// router.post('/test', function(req, res) {
+router.post('/test', function(req, res) {
 //     fetch('/api/test', {
 //   method: "POST",
 //   headers: {
@@ -52,8 +52,8 @@ router.get('/set-token-cookie', asyncHandler(async (req, res) => {
 //   body: JSON.stringify({ hello: 'world' })
 // }).then(res => res.json()).then(data => console.log(data));
 
-// //   res.json({ requestBody: req.body });
-// });
+  res.json({ requestBody: req.body });
+});
 
 
 module.exports = router;

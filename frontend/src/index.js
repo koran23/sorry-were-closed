@@ -1,4 +1,5 @@
 import React from 'react';
+import { restoreCSRF, fetch } from './store/csrf';
 
 import './index.css';
 import configureStore from './store';
@@ -9,6 +10,13 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 const store = configureStore();
+
+if (process.env.NODE_ENV !== 'production') {
+  restoreCSRF();
+
+  window.csrfFetch = fetch;
+  window.store = store;
+}
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
