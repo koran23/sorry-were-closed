@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 
 const rootReducer = combineReducers({
-  user: sessionReducer
+    session: sessionReducer 
 });
 
 let enhancer;
