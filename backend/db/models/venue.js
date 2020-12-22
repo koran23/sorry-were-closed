@@ -1,0 +1,18 @@
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Venue = sequelize.define('Venue', {
+    totalOccupacy: DataTypes.INTEGER,
+    summary: DataTypes.STRING,
+    address: DataTypes.STRING,
+    hasKitchen: DataTypes.BOOLEAN,
+    hasAirCon: DataTypes.BOOLEAN,
+    hasHeating: DataTypes.BOOLEAN,
+    hasInternet: DataTypes.BOOLEAN,
+    pricePerDay: DataTypes.INTEGER,
+    ownerId: DataTypes.INTEGER
+  }, {});
+  Venue.associate = function(models) {
+    // associations can be defined here
+  };
+  return Venue;
+};
