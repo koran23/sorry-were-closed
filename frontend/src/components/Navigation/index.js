@@ -3,6 +3,12 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import styled from 'styled-components';
+import Home from '../Home/index';
+
+const Bar = styled.div`
+background-color: gold;
+`
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,13 +26,14 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <>
+    <Bar>
       <NavLink exact to="/">
         Home
       </NavLink>
       {isLoaded && sessionLinks}
-    </>
+    </Bar>
   );
 }
+
 
 export default Navigation;
