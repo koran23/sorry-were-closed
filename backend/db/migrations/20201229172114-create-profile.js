@@ -1,39 +1,36 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Venues', {
+    return queryInterface.createTable('Profiles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      totalOccupacy: {
+      userId: {
+        allowNull: false,
+        unique:true,
+        references: { model: 'Users' },
         type: Sequelize.INTEGER
       },
-      summary: {
+      location: {
         type: Sequelize.STRING
       },
-      address: {
+      status: {
         type: Sequelize.STRING
       },
-      hasKitchen: {
-        type: Sequelize.BOOLEAN
+      bio: {
+        type: Sequelize.TEXT
       },
-      hasAirCon: {
-        type: Sequelize.BOOLEAN
+      facebook: {
+        type: Sequelize.STRING
       },
-      hasHeating: {
-        type: Sequelize.BOOLEAN
+      instagram: {
+        type: Sequelize.STRING
       },
-      hasInternet: {
-        type: Sequelize.BOOLEAN
-      },
-      pricePerDay: {
-        type: Sequelize.INTEGER
-      },
-      ownerId: {
-        type: Sequelize.INTEGER
+      twitter: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Venues');
+    return queryInterface.dropTable('Profiles');
   }
 };

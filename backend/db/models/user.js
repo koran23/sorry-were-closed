@@ -91,6 +91,7 @@ User.signup = async function ({ username, email, password }) {
 
   User.associate = function (models) {
     // associations can be defined here
+
   };
   return User;
 };

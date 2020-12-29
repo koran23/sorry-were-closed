@@ -11,8 +11,8 @@ module.exports = {
       venueId: {
         type: Sequelize.INTEGER
       },
-      venueType: {
-        type: Sequelize.STRING
+      typeId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

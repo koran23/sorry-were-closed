@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Venue = sequelize.define('Venue', {
     totalOccupacy: DataTypes.INTEGER,
-    summary: DataTypes.STRING,
-    address: DataTypes.STRING,
+    summary: DataTypes.TEXT,
+    address: DataTypes.TEXT,
     hasKitchen: DataTypes.BOOLEAN,
     hasAirCon: DataTypes.BOOLEAN,
     hasHeating: DataTypes.BOOLEAN,
