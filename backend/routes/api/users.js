@@ -44,14 +44,14 @@ router.post(
   })
 );
 
-router.post(
-  "/me",
-  asyncHandler(async (req, res) => {
-    const { userId, bio, location } = req.body;
+// router.post(
+//   "/me",
+//   asyncHandler(async (req, res) => {
+//     const { userId, bio, location } = req.body;
 
-    const profile = await Profile.create({ userId, bio, location })
-    res.json(profile);
-  })
-);
+//     const profile = await Profile.create({ userId, bio, location })
+//     res.json(profile);
+//   })
+// );
 
 module.exports = router;
