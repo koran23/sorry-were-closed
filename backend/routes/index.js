@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
+const profileRouter = require('./api/profile.js');
+
+router.use('/profile', profileRouter);
 
 router.use('/api', apiRouter);
 
