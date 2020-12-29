@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Profile } = require("../../db/models");
+const { User, Venue } = require("../../db/models");
 const router = express.Router();
 
 
@@ -8,53 +8,58 @@ const router = express.Router();
 // @desc   Test route
 // @access Public
 router.get(
-  "/me",
+  "/",
   asyncHandler(async (req, res) => {
 
-    const userId = req.params.id;
+    const venues = await Venue.findAll({ order: [['createdAt', 'DESC']], });
 
-    const profile = await Profile.findOne({ userId });
+    return res.json(venues);
 
-    if(!profile) {
-        res.status(400).json({ msg: 'There is no profile for this user' });
-    }
+  })
+);
 
-    return res.json(profile);
+router.get(
+  "/:venueId",
+  asyncHandler(async (req, res) => {
+    const venueId = req.params.id;
+
+    const venue = await Venue.findOne(venueId);
+
+    return res.json(venue);
   })
 );
 
 router.post(
-  "/",
+  "/new-venue",
   asyncHandler(async (req, res) => {
-    const { userId, bio, location } = req.body;
+    const { 
+        ownerId,
+        totalOccupacy, 
+        summary, 
+        address,
+        hasKitchen,
+        hasAirCon,
+        hasHeating,
+        hasInternet,
+        pricePerDay,
 
-    const profile = await Profile.create({ userId, bio, location })
-    res.json(profile);
+     } = req.body;
+
+    const venue = await Venue.create({ 
+        ownerId,
+        totalOccupacy, 
+        summary, 
+        address,
+        hasKitchen,
+        hasAirCon,
+        hasHeating,
+        hasInternet,
+        pricePerDay,
+        
+    })
+    res.json(venue);
   })
 );
 
-router.put(
-  '/:userId',
-  asyncHandler(async (req, res, next) => {
-    const userId = req.params.id;
-    const profile = await Profile.findOne(userId);
-    // if (userId !== profile.userId) {
-    //   const err = new Error('Unauthorized');
-    //   err.status = 401;
-    //   err.message = 'You are not authorized to edit this profile.';
-    //   err.title = 'Unauthorized';
-    //   throw err;
-    // }
-    if (profile) {
-      await profile.update({ 
-          bio: req.body.bio,
-          location: req.body.location 
-        });
-      res.json({ profile });
-    } else {
-      res.status(400).json({msg: 'no profile'})
-    }
-  })
-);
 
 module.exports = router;

@@ -13,6 +13,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Venue.associate = function(models) {
     // associations can be defined here
+    Venue.hasMany(models.Reservation, {
+      foreignKey: "venueId",
+    });
+    Venue.hasMany(models.Review, {
+      foreignKey: "venueId",
+    });
+    Venue.belongsTo(models.User, {
+      foreignKey: "ownerId",
+    });
+    
   };
   return Venue;
 };

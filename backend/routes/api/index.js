@@ -11,6 +11,15 @@ const { requireAuth } = require('../../utils/auth.js');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const profileRouter = require('./profile.js');
+const venueRouter = require('./venue.js');
+const reviewRouter = require('./review.js');
+const reservationRouter = require('./reservation.js');
+
+router.use('/reservation', reservationRouter);
+
+router.use('/review', reviewRouter);
+
+router.use('/venue', venueRouter);
 
 router.use('/profile', profileRouter);
 

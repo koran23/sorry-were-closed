@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Profile } = require("../../db/models");
+const { User, Profile, Review, Reservation } = require("../../db/models");
 const router = express.Router();
 
 
@@ -38,13 +38,7 @@ router.put(
   asyncHandler(async (req, res, next) => {
     const userId = req.params.id;
     const profile = await Profile.findOne(userId);
-    // if (userId !== profile.userId) {
-    //   const err = new Error('Unauthorized');
-    //   err.status = 401;
-    //   err.message = 'You are not authorized to edit this profile.';
-    //   err.title = 'Unauthorized';
-    //   throw err;
-    // }
+
     if (profile) {
       await profile.update({ 
           bio: req.body.bio,
@@ -54,6 +48,32 @@ router.put(
     } else {
       res.status(400).json({msg: 'no profile'})
     }
+  })
+);
+
+router.get(
+  "/me/review/:id",
+  asyncHandler(async (req, res) => {
+    const userId = req.params.id;
+
+    const reviews = await Review.findAll({ where: {
+        userId,
+      }, });
+
+    return res.json(reviews);
+  })
+);
+
+router.get(
+  "/me/reservation/:id",
+  asyncHandler(async (req, res) => {
+    const userId = req.params.id;
+
+    const reservations = await Reservation.findAll({ where: {
+        userId,
+      }, });
+
+    return res.json(reservations);
   })
 );
 
