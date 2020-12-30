@@ -1,25 +1,24 @@
-
 import {useEffect, useState} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
-import { fetchAllVenues } from '../../store/venues';
+import { getCurrentProfile } from '../../store/profile';
 
-const Venue = ({theVenue}) => {
+const Profile = ({theProfile}) => {
 
     return (
         <div>
-            <h3>{theVenue.address}</h3>
+            <h3>{theProfile.location}</h3>
         </div>
     );
+
 };
 
-const VenuesPage = () => {
+const ProfilePage = () => {
     const dispatch = useDispatch();
 
-    const currentVenues = useSelector(fullReduxState => {
-        return fullReduxState.venues;
+    const currentProfile = useSelector(fullReduxState => {
+        return fullReduxState.profile.profile;
     });
-
     // With an empty array: 
     // do this once when this component is first shown
     useEffect(async () => {
@@ -27,20 +26,17 @@ const VenuesPage = () => {
         // const response = await fetch("/api/bands");
         // setBands(response.data.bands);
         dispatch(
-            fetchAllVenues()
+            getCurrentProfile()
         );
     }, []);
 
     return (
         <div>
             <h2>Content</h2>
-            {!currentVenues && <h3>Loading...</h3>}
-            {currentVenues && currentVenues.map(venue => {
-                console.log(venue)
-                return <Venue theVenue={venue} />;
-            })}
+            {!currentProfile && <h3>Loading...</h3>}
+            {currentProfile &&  <Profile theProfile={currentProfile} />}                 
         </div>
     );
 };
 
-export default VenuesPage;
+export default ProfilePage;

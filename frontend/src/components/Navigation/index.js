@@ -89,7 +89,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = ( 
     <>
-      <NavLink exact to="/profile">
+      <NavLink exact to="/profile/me">
         Profile
       </NavLink>
       <NavLink exact to="/venue">

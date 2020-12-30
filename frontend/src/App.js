@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Container from "./styles/Container";
 import VenuesPage from './components/VenuesPage';
+import ProfilePage from './components/ProfilePage';
 import Home from './components/Home';
 
 
@@ -20,9 +21,9 @@ function App() {
 
   return (
     <>
-    <Container>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
+    <Container>
         <Switch>
           <Route path="/login">
             <LoginFormPage />
@@ -33,12 +34,15 @@ function App() {
           <Route path="/venue">
             <VenuesPage />
           </Route>
+          <Route path="/profile/me">
+            <ProfilePage />
+          </Route>
           <Route path="/" exact>
             <Home />
           </Route>
         </Switch>
-      )}
       </Container>
+      )}
     </>
   );
 }

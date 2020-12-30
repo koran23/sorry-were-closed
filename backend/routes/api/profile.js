@@ -19,7 +19,7 @@ router.get(
         res.status(400).json({ msg: 'There is no profile for this user' });
     }
 
-    return res.json(profile);
+    res.json({profile: profile});
   })
 );
 
