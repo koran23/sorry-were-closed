@@ -87,7 +87,17 @@ function Navigation({ isLoaded }) {
 
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
+    sessionLinks = ( 
+    <>
+      <NavLink exact to="/profile">
+        Profile
+      </NavLink>
+      <NavLink exact to="/venue">
+        Venues
+      </NavLink>
+    <ProfileButton user={sessionUser} /> 
+    </>
+    );
   } else {
     sessionLinks = (
       <>
