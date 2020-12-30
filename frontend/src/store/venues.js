@@ -12,10 +12,10 @@ const setVenues = (venues) => ({
 //Thunk Action Crreators
 export const fetchAllVenues = () => async (dispatch) => {
     const res = await fetch(`/api/venue`);
-    const venues = await res.json();
+    // const venues = await res.json();
 
     if (res.ok) {
-    dispatch(setVenues(venues))
+    dispatch(setVenues(res.data.venues))
     }
 };
 
