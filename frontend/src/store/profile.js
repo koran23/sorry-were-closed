@@ -2,6 +2,7 @@ import { fetch } from "./csrf";
 
 const GET_PROFILE = "profile/GET_PROFILE";
 
+
 //Action Creators
 const getProfile = (profile) => ({
   type: GET_PROFILE,

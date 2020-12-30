@@ -9,6 +9,7 @@ import Container from "./styles/Container";
 import VenuesPage from './components/VenuesPage';
 import ProfilePage from './components/ProfilePage';
 import Home from './components/Home';
+import DashBoard from "./components/DashBoard";
 
 
 function App() {
@@ -34,8 +35,11 @@ function App() {
           <Route path="/venue">
             <VenuesPage />
           </Route>
-          <Route path="/profile/me">
+          {/* <Route path="/profile/me">
             <ProfilePage />
+          </Route> */}
+          <Route path="/dashboard">
+            <DashBoard />
           </Route>
           <Route path="/" exact>
             <Home />

@@ -2,7 +2,7 @@
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
-import { getCurrentProfile } from "../../store/profile";
+
 
 export const StyledHome = styled.div`
   padding: 1.3rem;
@@ -55,7 +55,6 @@ const Home = () => {
                     <h1></h1>
                 </div>
             </div>
-            {loggedInUser && <h3>Welcome {loggedInUser.username}</h3>}
         </div>
         </StyledHome>
     );

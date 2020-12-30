@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import styled from 'styled-components';
-import Home from '../Home/index';
+import DashBoard from '../DashBoard/index';
 
 const Bar = styled.div`
 position: fixed;
@@ -89,11 +89,14 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = ( 
     <>
-      <NavLink exact to="/profile/me">
+      {/* <NavLink exact to="/profile/me">
         Profile
-      </NavLink>
+      </NavLink> */}
       <NavLink exact to="/venue">
         Venues
+      </NavLink>
+      <NavLink exact to="/dashboard">
+        DashBoard
       </NavLink>
     <ProfileButton user={sessionUser} /> 
     </>
