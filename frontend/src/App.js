@@ -5,6 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Container from "./styles/Container";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <>
+    <Container>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -27,6 +30,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      </Container>
     </>
   );
 }

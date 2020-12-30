@@ -8,6 +8,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import GlobalStyle from "./styles/GlobalStyle";
+import { darkTheme } from "./styles/theme";
+import { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 const store = configureStore();
 
@@ -31,11 +35,19 @@ if (process.env.NODE_ENV !== 'production') {
 
 function Root() {
   return (
+     <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
+      <ToastContainer
+        autoClose={2500}
+        position="top-right"
+        closeButton={false}
+      />
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
+    </ThemeProvider>
   );
 }
 

@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
+import { StyledAuth } from "../SignupFormPage";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function LoginFormPage() {
   }
 
   return (
+    <StyledAuth>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -49,6 +51,7 @@ function LoginFormPage() {
       </label>
       <button type="submit">Log In</button>
     </form>
+    </StyledAuth>
   );
 }
 
