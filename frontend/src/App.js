@@ -35,12 +35,9 @@ function App() {
           <Route path="/venue">
             <VenuesPage />
           </Route>
-          {/* <Route path="/profile/me">
-            <ProfilePage />
-          </Route> */}
-          <Route path="/dashboard">
+          <Route path="/profile/me">
             <DashBoard />
-          </Route>
+          </Route>       
           <Route path="/" exact>
             <Home />
           </Route>

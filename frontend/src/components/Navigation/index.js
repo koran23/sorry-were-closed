@@ -95,7 +95,7 @@ function Navigation({ isLoaded }) {
       <NavLink exact to="/venue">
         Venues
       </NavLink>
-      <NavLink exact to="/dashboard">
+      <NavLink exact to="/profile/me">
         DashBoard
       </NavLink>
     <ProfileButton user={sessionUser} /> 

@@ -20,9 +20,13 @@ const DashBoard = () => {
         return state.session.user;
     });
 
+    console.log(loggedInUser);
+
     const currentProfile = useSelector(fullReduxState => {
         return fullReduxState.profile.profile;
     });
+
+     console.log(currentProfile);
     // With an empty array: 
     // do this once when this component is first shown
     useEffect(async () => {

@@ -13,8 +13,9 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return (
-    <Redirect to="/dashboard" />
+    <Redirect to="/profile/me" />
   );
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
