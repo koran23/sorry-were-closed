@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Profile, Review, Reservation } = require("../../db/models");
+const { User, Profile, Review, Reservation, Venue } = require("../../db/models");
 const router = express.Router();
 
 
@@ -71,9 +71,11 @@ router.get(
 
     const reservations = await Reservation.findAll({ where: {
         userId,
-      }, });
+      }, include: [
+        Venue
+      ]});
 
-    return res.json(reservations);
+    return res.json({reservations: reservations});
   })
 );
 

@@ -11,6 +11,7 @@ import ProfilePage from './components/ProfilePage';
 import Home from './components/Home';
 import DashBoard from "./components/DashBoard";
 import BookingForm from './components/BookingForm';
+import CreateProfilePage from './components/CreateProfilePage'
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/profile/me">
             <DashBoard />
+          </Route>       
+          <Route path="/new-profile">
+            <CreateProfilePage />
           </Route>       
           <Route path="/book/:venueId">
             <BookingForm />

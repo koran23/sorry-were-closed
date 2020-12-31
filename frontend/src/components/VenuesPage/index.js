@@ -8,9 +8,9 @@ import { useHistory, useParams } from "react-router-dom";
 
 const VenuesPage = () => {
 const history = useHistory();
-const { venueId } = useParams();
 
-const bookVenue = () => {
+
+const bookVenue = (venueId) => {
       history.push(`/book/${venueId}`);
   }
 
@@ -18,7 +18,7 @@ const bookVenue = () => {
     return (
       <div>
         <h3>{theVenue.address}</h3>
-        <Button onClick={bookVenue}>Book</Button>
+        <Button onClick={() => {bookVenue(theVenue.id)} }>Book</Button>
       </div>
     );
   };

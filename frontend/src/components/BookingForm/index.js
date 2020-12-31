@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import Button from '../../styles/Button'
 import { createReservation } from '../../store/reservations'
@@ -8,7 +8,7 @@ const BookingForm = () => {
   const { venueId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const loggedInUser = useSelector((store) => store.session.user)
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
 
@@ -16,6 +16,8 @@ const BookingForm = () => {
       e.preventDefault();
 
     const payload = {
+      userId: loggedInUser.id,
+      venueId,
       start,
       end
     };
@@ -34,24 +36,24 @@ const BookingForm = () => {
         <div>
             <input
             id='start-date'
-            type='text'
+            type='date'
             value={start}
-            onChange={setStart}
+            onChange={(e) => setStart(e.target.value)}
             placeholder='start'
             />
         </div>
         <div>
             <input
             id='end-date'
-            type='text'
+            type='date'
              value={end}
-            onChange={setEnd}
+            onChange={(e) => setEnd(e.target.value)}
             placeholder='end'
             />
         </div>
         <Button type='submit'>Submit</Button>
     </form>
-      <div>Hello {venueId}</div>
+      {/* <div>Hello {venueId}</div> */}
       </>
   )
 };

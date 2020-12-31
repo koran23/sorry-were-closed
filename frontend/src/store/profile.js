@@ -1,11 +1,16 @@
 import { fetch } from "./csrf";
 
 const GET_PROFILE = "profile/GET_PROFILE";
+const CREATE_PROFILE = "profile/CREATE_PROFILE";
 
 
 //Action Creators
 const getProfile = (profile) => ({
   type: GET_PROFILE,
+  profile: profile
+});
+const setProfile = (profile) => ({
+  type: CREATE_PROFILE,
   profile: profile
 });
 
@@ -18,6 +23,20 @@ export const getCurrentProfile = () => async (dispatch) => {
     dispatch(getProfile(res.data.profile));
   }
 };
+export const createProfile = (body) => async (dispatch) => {
+  const res = await fetch(`/api/profile/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  // const venues = await res.json();
+
+  if (res.ok) {
+    dispatch(setProfile(res.data.profile));
+  }
+};
 
 const initialState = {
   profile: null,
@@ -27,6 +46,11 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PROFILE:
+      return {
+        ...state,
+        profile: action.profile,
+      };
+    case CREATE_PROFILE:
       return {
         ...state,
         profile: action.profile,
