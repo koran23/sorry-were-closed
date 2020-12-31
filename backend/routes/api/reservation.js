@@ -13,7 +13,7 @@ router.post(
         venueId,
         startDate,
         endDate,
-        total
+        
      } = req.body;
 
     const reservation = await Reservation.create({ 
@@ -21,9 +21,9 @@ router.post(
         venueId,
         startDate,
         endDate,
-        total
+        
     })
-    res.json(reservation);
+    res.json({reservation: reservation});
   })
 );
 

@@ -14,7 +14,6 @@ import BookingForm from './components/BookingForm';
 
 
 function App() {
-  const { venueId } = useParams();
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   
