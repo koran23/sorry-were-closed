@@ -6,6 +6,7 @@ import Button from '../../styles/Button'
 import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
+
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
@@ -33,7 +34,6 @@ function ProfileButton({ user }) {
     e.preventDefault();
     history.push('/');
     dispatch(sessionActions.logout());
-   
   };
 
   return (

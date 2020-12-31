@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../store/profile";
+import { fetchReservation } from "../../store/reservations";
 import { Link } from "react-router-dom";
 import Button from "../../styles/Button";
 
@@ -27,22 +28,24 @@ const DashBoard = () => {
     return state.session.user;
   });
 
-  console.log(loggedInUser);
-
   const currentProfile = useSelector((fullReduxState) => {
     return fullReduxState.profile.profile;
   });
-  const currentReservation = useSelector((fullReduxState) => {
-    return fullReduxState.reservation.reservation;
-  });
+  // const currentReservation = useSelector((fullReduxState) => {
+  //   return fullReduxState.reservations;
+  // });
   // With an empty array:
   // do this once when this component is first shown
-  useEffect(async () => {
+  useEffect(() => {
     // Request to the server.
     // const response = await fetch("/api/bands");
     // setBands(response.data.bands);
-    dispatch(getCurrentProfile());
-  }, []);
+    dispatch(getCurrentProfile(loggedInUser.id)); // This is the id that's passed into the route
+  }, [dispatch, loggedInUser]);
+  // useEffect(() => {
+  //   // dispatch(getCurrentProfile(loggedInUser.id));
+  //   console.log('fetching profile');
+  // }, [dispatch, currentProfile]);
 
   return (
     <div>
@@ -60,8 +63,7 @@ const DashBoard = () => {
         {currentProfile && <Profile theProfile={currentProfile} />}
       </div>
       <div>
-        {/* {!currentReservation && <h3>Loading...</h3>}
-        {currentReservation && <Profile theReservaton={currentReservation} />} */}
+        {/* {currentReservation && <Reservation theReservaton={currentReservation} />} */}
       </div>
     </div>
   );

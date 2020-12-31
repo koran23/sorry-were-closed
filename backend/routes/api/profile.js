@@ -8,15 +8,17 @@ const router = express.Router();
 // @desc   Test route
 // @access Public
 router.get(
-  "/me",
+  "/me/:id",
   asyncHandler(async (req, res) => {
 
     const userId = req.params.id;
 
-    const profile = await Profile.findOne({ userId });
+    const profile = await Profile.findOne({where: {
+      userId
+    }});
 
     if(!profile) {
-        res.status(400).json({ msg: 'There is no profile for this user' });
+        return res.json({ msg: 'There is no profile for this user' });
     }
 
     res.json({profile: profile});
@@ -29,7 +31,7 @@ router.post(
     const { userId, bio, location } = req.body;
 
     const profile = await Profile.create({ userId, bio, location })
-    res.json(profile);
+    res.json({profile: profile});
   })
 );
 

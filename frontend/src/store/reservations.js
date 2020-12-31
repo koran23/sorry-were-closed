@@ -31,7 +31,7 @@ export const createReservation = (body) => async (dispatch) => {
 };
 
 export const fetchReservation = (userId) => async (dispatch) => {
-  const res = await fetch('/api/profile/me/reservation/${userId}')
+  const res = await fetch(`/api/profile/me/reservation/${userId}`)
   // const venues = await res.json();
 
   if (res.ok) {

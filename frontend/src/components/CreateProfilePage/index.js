@@ -34,16 +34,16 @@ function CreateProfilePage() {
             type='text'
             value={bio}
             onChange={(e) => setBio(e.target.value)}
-            placeholder='start'
+            placeholder='bio'
             />
         </div>
         <div>
             <input
-            id='bio'
+            id='location'
             type='text'
              value={location}
             onChange={(e) => setLocation(e.target.value)}
-            placeholder='end'
+            placeholder='location'
             />
         </div>
         <Button type='submit'>Submit</Button>

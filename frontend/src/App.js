@@ -37,7 +37,7 @@ function App() {
           <Route path="/venue">
             <VenuesPage />
           </Route>
-          <Route path="/profile/me">
+          <Route path="/dashboard">
             <DashBoard />
           </Route>       
           <Route path="/new-profile">
