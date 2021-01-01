@@ -44,7 +44,7 @@ const bookVenue = (venueId) => {
 
   return (
     <div>
-      <h2>After Dark</h2>
+      <h2></h2>
       {!currentVenues && <h3>Loading...</h3>}
       {currentVenues &&
         currentVenues.map((venue) => {

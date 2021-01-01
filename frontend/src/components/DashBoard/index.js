@@ -13,13 +13,13 @@ const Profile = ({ theProfile }) => {
     </div>
   );
 };
-// const Reservation = ({ theReservaton }) => {
-//   return (
-//     <div>
-//       <h3>{theReservaton}</h3>
-//     </div>
-//   );
-// };
+const Reservation = ({ theReservation }) => {
+  return (
+    <div>
+      <h3>{theReservation.Venue.address}</h3>
+    </div>
+  );
+};
 
 const DashBoard = () => {
   const dispatch = useDispatch();
@@ -31,15 +31,14 @@ const DashBoard = () => {
   const currentProfile = useSelector((fullReduxState) => {
     return fullReduxState.profile.profile;
   });
-  // const currentReservation = useSelector((fullReduxState) => {
-  //   return fullReduxState.reservations;
-  // });
+  const currentReservation = useSelector((fullReduxState) => {
+    return fullReduxState.reservation.reservations;
+  });
   // With an empty array:
   // do this once when this component is first shown
   useEffect(() => {
     // Request to the server.
-    // const response = await fetch("/api/bands");
-    // setBands(response.data.bands);
+    dispatch(fetchReservation(loggedInUser.id));
     dispatch(getCurrentProfile(loggedInUser.id)); // This is the id that's passed into the route
   }, [dispatch, loggedInUser]);
   // useEffect(() => {
@@ -62,8 +61,12 @@ const DashBoard = () => {
         )}
         {currentProfile && <Profile theProfile={currentProfile} />}
       </div>
+      <h3>Reservations:</h3>
       <div>
-        {/* {currentReservation && <Reservation theReservaton={currentReservation} />} */}
+        {currentReservation &&
+          currentReservation.map((reservation) => {
+            return <Reservation theReservation={reservation} />;
+          })}
       </div>
     </div>
   );
