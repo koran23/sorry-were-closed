@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
-
+import Card from '../../styles/card'
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../store/profile";
 import { fetchReservation } from "../../store/reservations";
+import { fetchVenue } from "../../store/venues";
 import { Link } from "react-router-dom";
 import Button from "../../styles/Button";
+
+
 
 const Profile = ({ theProfile }) => {
   return (
     <div>
-      <h3>{theProfile.location}</h3>
+      <div>
+        <h3>{theProfile.location}</h3>
+      </div>
     </div>
   );
 };
 const Reservation = ({ theReservation }) => {
   return (
-    <div>
-      <h3>{theReservation.Venue.address}</h3>
-    </div>
+    <Card>
+      <div className="card">
+        <div className="container">
+          <h3>{theReservation.Venue.address}</h3>
+        </div>
+      </div>
+    </Card>
   );
 };
 
@@ -68,7 +77,14 @@ const DashBoard = () => {
             return <Reservation theReservation={reservation} />;
           })}
       </div>
+      <h3>
+        Upload a venue for people to party!
+        <Link to="/new-venue">
+              <Button>here</Button>
+            </Link>
+      </h3>
     </div>
+    
   );
 };
 

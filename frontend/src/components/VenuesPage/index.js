@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import Card from '../../styles/card'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllVenues } from "../../store/venues";
 import Button from "../../styles/Button";
@@ -16,10 +16,15 @@ const bookVenue = (venueId) => {
 
   const Venue = ({ theVenue }) => {
     return (
-      <div>
+      <Card>
+      <div className="card">
+        <div className='container'>
         <h3>{theVenue.address}</h3>
+        <h3>{theVenue.summary}</h3>
         <Button onClick={() => {bookVenue(theVenue.id)} }>Book</Button>
       </div>
+      </div>
+      </Card>
     );
   };
 

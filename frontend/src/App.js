@@ -12,6 +12,7 @@ import Home from './components/Home';
 import DashBoard from "./components/DashBoard";
 import BookingForm from './components/BookingForm';
 import CreateProfilePage from './components/CreateProfilePage'
+import CreateVenuePage from './components/CreateVenue'
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/venue">
             <VenuesPage />
+          </Route>
+          <Route path="/new-venue">
+            <CreateVenuePage />
           </Route>
           <Route path="/dashboard">
             <DashBoard />

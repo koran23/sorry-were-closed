@@ -52,7 +52,20 @@ router.post(
       hasInternet,
       pricePerDay,
     });
-    res.json(venue);
+    res.json({venue: venue});
+  })
+);
+
+router.get(
+  "/venue/:id",
+  asyncHandler(async (req, res) => {
+    const ownerId = req.params.id;
+
+    const venues = await Venue.findAll({ where: {
+        ownerId,
+      }});
+
+    return res.json({venues: venues});
   })
 );
 
