@@ -97,6 +97,9 @@ User.signup = async function ({ username, email, password }) {
     User.hasMany(models.Reservation, {
       foreignKey: "userId",
     });
+    User.hasMany(models.Venue, {
+      foreignKey: "ownerId",
+    });
     
   };
   return User;

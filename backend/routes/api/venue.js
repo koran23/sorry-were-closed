@@ -57,15 +57,15 @@ router.post(
 );
 
 router.get(
-  "/venue/:id",
+  "/:id",
   asyncHandler(async (req, res) => {
     const ownerId = req.params.id;
 
     const venues = await Venue.findAll({ where: {
-        ownerId,
+        ownerId
       }});
-
-    return res.json({venues: venues});
+     
+    res.json({venues: venues});
   })
 );
 
