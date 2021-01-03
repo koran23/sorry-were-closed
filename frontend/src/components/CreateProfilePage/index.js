@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {createProfile} from '../../store/profile';
 import { useHistory } from "react-router-dom";
 import Button from '../../styles/Button';
+import { StyledAuth } from "../SignupFormPage";
 
 function CreateProfilePage() {
   const dispatch = useDispatch();
@@ -29,13 +30,13 @@ function CreateProfilePage() {
   })
 
   return (
-    <>
+    <StyledAuth>
     <h2></h2>
     <form onSubmit={onSubmit}>
         <div>
             <input
             id='bio'
-            type='text'
+            type='textarea'
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             placeholder='bio'
@@ -53,7 +54,7 @@ function CreateProfilePage() {
         <Button type='submit'>Submit</Button>
     </form>
       {/* <div>Hello {venueId}</div> */}
-      </>
+      </StyledAuth>
   )
 }
 

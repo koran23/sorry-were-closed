@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {setVenue} from '../../store/venues';
 import { useHistory } from "react-router-dom";
 import Button from '../../styles/Button';
+import { StyledAuth } from "../SignupFormPage";
 
 function CreateVenuePage() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function CreateVenuePage() {
   };
 
   return (
-    <>
+    <StyledAuth>
     <h2></h2>
     <form onSubmit={onSubmit}>
         <div>
@@ -115,7 +116,7 @@ function CreateVenuePage() {
         <Button type='submit'>Submit</Button>
     </form>
       {/* <div>Hello {venueId}</div> */}
-      </>
+      </StyledAuth>
   )
 }
 

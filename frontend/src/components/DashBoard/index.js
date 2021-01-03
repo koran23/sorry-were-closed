@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from '../../styles/card'
+import Card from "../../styles/card";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../store/profile";
 import { fetchReservation } from "../../store/reservations";
@@ -7,13 +7,12 @@ import { fetchVenues } from "../../store/venues";
 import { Link } from "react-router-dom";
 import Button from "../../styles/Button";
 
-
-
 const Profile = ({ theProfile }) => {
   return (
     <div>
       <div>
-        <h3>{theProfile.location}</h3>
+        <h3>Location: {theProfile.location}</h3>
+        <h3>About Me: {theProfile.bio}</h3>
       </div>
     </div>
   );
@@ -22,8 +21,8 @@ const Profile = ({ theProfile }) => {
 const Reservation = ({ theReservation }) => {
   return (
     <Card>
-      <div className="card">
-        <div className="container">
+      <div>
+        <div>
           <h3>{theReservation.Venue.address}</h3>
         </div>
       </div>
@@ -58,7 +57,6 @@ const DashBoard = () => {
     return fullReduxState.venues.venues;
   });
 
-  
   // With an empty array:
   // do this once when this component is first shown
   useEffect(() => {
@@ -76,6 +74,7 @@ const DashBoard = () => {
     <div>
       <h2></h2>
       <div>{loggedInUser && <h3>Welcome {loggedInUser.username}</h3>}</div>
+      <br></br>
       <div>
         {!currentProfile && (
           <h3>
@@ -87,6 +86,7 @@ const DashBoard = () => {
         )}
         {currentProfile && <Profile theProfile={currentProfile} />}
       </div>
+      <br></br>
       <h3>Reservations:</h3>
       <div>
         {currentReservation &&
@@ -94,21 +94,22 @@ const DashBoard = () => {
             return <Reservation theReservation={reservation} />;
           })}
       </div>
+      <br></br>
       {!currentVenue && (
-      <h3>
-        Upload a venue for people to party!
-        <Link to="/new-venue">
-              <Button>here</Button>
-            </Link>
-      </h3>
+        <h3>
+          Upload a venue!
+          <Link to="/new-venue">
+            <br></br>
+            <Button>here</Button>
+          </Link>
+        </h3>
       )}
-       {currentVenue && currentVenue.map((venue) => {
-        return <Venue theVenue={venue} />
-      })} 
+      {currentVenue &&
+        currentVenue.map((venue) => {
+          return <Venue theVenue={venue} />;
+        })}
     </div>
-    
   );
-  
 };
 
 export default DashBoard;

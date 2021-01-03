@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
 		cursor: pointer;
 	}
 
-	.secondary {
+	/* .secondary {
 		color: ${(props) => props.theme.secondaryColor};
 	}
 
@@ -107,7 +107,7 @@ const GlobalStyle = createGlobalStyle`
 	.Toastify__toast--dark, .Toastify__toast--default {
 		background: ${(props) => props.theme.purple};
     color: #fff;
-	}
+	} */
 
 	@media screen and (max-width: 530px) {
 		body {
