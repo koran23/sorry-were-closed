@@ -8,6 +8,7 @@ import { StyledAuth } from "../SignupFormPage";
 function EditProfilePage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [showMenu, setShowMenu] = useState(false);
   const loggedInUser = useSelector((store) => store.session.user);
   const profile = useSelector((store) => store.session.profile);
 
@@ -16,6 +17,24 @@ function EditProfilePage() {
 
   const updateBio = (e) => setBio(e.target.value);
   const updateLocation = (e) => setLocation(e.target.value);
+
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +73,10 @@ function EditProfilePage() {
             placeholder='location'
             />
         </div>
-        <Button type='submit'>Update</Button>
+        <Button onClick={openMenu} type='submit'>Update</Button>
+        {showMenu && (
+        <h3>Profile Updated!</h3>
+      )}
     </form>
       {/* <div>Hello {venueId}</div> */}
       </StyledAuth>

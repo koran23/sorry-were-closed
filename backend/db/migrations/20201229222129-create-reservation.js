@@ -19,10 +19,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       startDate: {
-        type: Sequelize.DATE
+        type: Sequelize.TEXT
       },
       endDate: {
-        type: Sequelize.DATE
+        type: Sequelize.TEXT
       },
       total: {
         type: Sequelize.INTEGER

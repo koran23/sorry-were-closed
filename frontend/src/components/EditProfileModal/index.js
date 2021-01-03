@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
-import { Redirect } from "react-router-dom";
 import Button from "../../styles/Button";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import EditProfilePage from '../EditProfilePage/index';
 
-function ProfileButton({ user }) {
+function EditProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
@@ -23,33 +23,27 @@ function ProfileButton({ user }) {
       setShowMenu(false);
     };
 
-    document.addEventListener("click", closeMenu);
+    // document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
+  const edit = (e) => {
     e.preventDefault();
-    history.push("/");
+    history.push('/edit-profile/${loggedInUser.id}');
     dispatch(sessionActions.logout());
   };
 
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+        Edit
       </button>
       {showMenu && (
-        <ul>
-          <li>{user.username}</li>
-          <br></br>
-          <li>
-            <Button onClick={logout}>Log Out</Button>
-          </li>
-        </ul>
+        <EditProfilePage/>
       )}
     </>
   );
 }
 
-export default ProfileButton;
+export default EditProfileButton;

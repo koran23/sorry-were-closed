@@ -6,7 +6,9 @@ import { fetchReservation } from "../../store/reservations";
 import { fetchVenues } from "../../store/venues";
 import { Link } from "react-router-dom";
 import Button from "../../styles/Button";
-import {useSpring, animated} from 'react-spring'
+import {useSpring, animated} from 'react-spring';
+import { modal, modalDiv } from '../../UI/Modal';
+import EditProfileButton from '../../components/EditProfileModal/index'
 
 const Profile = ({ theProfile }) => {
   return (
