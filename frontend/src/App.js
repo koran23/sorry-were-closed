@@ -13,6 +13,7 @@ import DashBoard from "./components/DashBoard";
 import BookingForm from './components/BookingForm';
 import CreateProfilePage from './components/CreateProfilePage'
 import CreateVenuePage from './components/CreateVenue'
+import EditProfilePage from "./components/EditProfilePage";
 
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
           </Route>       
           <Route path="/book/:venueId">
             <BookingForm />
+          </Route>       
+          <Route path="/edit-profile/:userId">
+            <EditProfilePage />
           </Route>       
           <Route path="/" exact>
             <Home />

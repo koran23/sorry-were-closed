@@ -1,32 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {createProfile} from '../../store/profile';
+import {createProfile, editProfile} from '../../store/profile';
 import { useHistory } from "react-router-dom";
 import Button from '../../styles/Button';
 
-function CreateProfilePage() {
+function EditProfilePage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const loggedInUser = useSelector((store) => store.session.user);
+  const profile = useSelector((store) => store.session.profile);
+
   const [bio, setBio] = useState("");
   const [location, setLocation] = useState("");
+
+  const updateBio = (e) => setBio(e.target.value);
+  const updateLocation = (e) => setLocation(e.target.value);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
+        ...profile,
       userId: loggedInUser.id,
       bio,
       location,
     };
 
-    dispatch(createProfile(payload));
-    history.push(`/dashboard`);
+    dispatch(editProfile(loggedInUser.id, payload));
+    // history.push(`/dashboard`);
   };
 
-  useEffect(() => {
-    
-  })
 
   return (
     <>
@@ -37,7 +40,7 @@ function CreateProfilePage() {
             id='bio'
             type='text'
             value={bio}
-            onChange={(e) => setBio(e.target.value)}
+            onChange={updateBio}
             placeholder='bio'
             />
         </div>
@@ -46,15 +49,15 @@ function CreateProfilePage() {
             id='location'
             type='text'
              value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            onChange={updateLocation}
             placeholder='location'
             />
         </div>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit'>Update</Button>
     </form>
       {/* <div>Hello {venueId}</div> */}
       </>
   )
 }
 
-export default CreateProfilePage;
+export default EditProfilePage;

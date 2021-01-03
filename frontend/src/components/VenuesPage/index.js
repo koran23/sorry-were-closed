@@ -35,7 +35,7 @@ const bookVenue = (venueId) => {
   const dispatch = useDispatch();
 
   const currentVenues = useSelector((fullReduxState) => {
-    return fullReduxState.venues;
+    return fullReduxState.venues.venues;
   });
 
   // With an empty array:

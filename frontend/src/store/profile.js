@@ -31,6 +31,23 @@ export const getCurrentProfile = (userId) => async (dispatch) => {
     dispatch(getProfile(res.data.profile));
   
 };
+export const editProfile = (userId, payload) => async (dispatch) => {
+  const res = await fetch(`/api/profile/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  // const venues = await res.json();
+
+  if (res.ok) {
+    const profile = await res.json
+    dispatch(setProfile(profile));
+    return profile;
+  }
+};
+
 export const createProfile = (body) => async (dispatch) => {
   const res = await fetch(`/api/profile/`, {
     method: "POST",

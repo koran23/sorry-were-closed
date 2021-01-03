@@ -3,7 +3,7 @@ import Card from '../../styles/card'
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../store/profile";
 import { fetchReservation } from "../../store/reservations";
-import { fetchVenue } from "../../store/venues";
+import { fetchVenues } from "../../store/venues";
 import { Link } from "react-router-dom";
 import Button from "../../styles/Button";
 
@@ -18,6 +18,7 @@ const Profile = ({ theProfile }) => {
     </div>
   );
 };
+
 const Reservation = ({ theReservation }) => {
   return (
     <Card>
@@ -27,6 +28,16 @@ const Reservation = ({ theReservation }) => {
         </div>
       </div>
     </Card>
+  );
+};
+
+const Venue = ({ theVenue }) => {
+  return (
+    <div>
+      <div>
+        <h3>{theVenue.address}</h3>
+      </div>
+    </div>
   );
 };
 
@@ -43,11 +54,17 @@ const DashBoard = () => {
   const currentReservation = useSelector((fullReduxState) => {
     return fullReduxState.reservation.reservations;
   });
+  const currentVenue = useSelector((fullReduxState) => {
+    return fullReduxState.venues.venues;
+  });
+
+  
   // With an empty array:
   // do this once when this component is first shown
   useEffect(() => {
     // Request to the server.
     dispatch(fetchReservation(loggedInUser.id));
+    dispatch(fetchVenues(loggedInUser.id));
     dispatch(getCurrentProfile(loggedInUser.id)); // This is the id that's passed into the route
   }, [dispatch, loggedInUser]);
   // useEffect(() => {
@@ -77,15 +94,21 @@ const DashBoard = () => {
             return <Reservation theReservation={reservation} />;
           })}
       </div>
+      {!currentVenue && (
       <h3>
         Upload a venue for people to party!
         <Link to="/new-venue">
               <Button>here</Button>
             </Link>
       </h3>
+      )}
+       {currentVenue && currentVenue.map((venue) => {
+        return <Venue theVenue={venue} />
+      })} 
     </div>
     
   );
+  
 };
 
 export default DashBoard;

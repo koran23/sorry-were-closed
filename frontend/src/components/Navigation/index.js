@@ -109,10 +109,12 @@ function Navigation({ isLoaded }) {
 
   return (
     <Bar>
+      <div className='nav_links'>
       <NavLink exact to="/">
         Home
       </NavLink>
       {isLoaded && sessionLinks}
+      </div>
     </Bar>
   );
 }
