@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllVenues } from "../../store/venues";
 import Button from "../../styles/Button";
 import { useHistory, useParams } from "react-router-dom";
-import styled from "styled-components";
+import {useSpring, animated} from 'react-spring'
 
-  
+
+ 
 
 const VenuesPage = () => {
 const history = useHistory();
@@ -17,15 +18,19 @@ const bookVenue = (venueId) => {
   }
 
   const Venue = ({ theVenue }) => {
+    const props = useSpring({
+      opacity: 1,
+      from: { opacity: 0 },
+    })
     return (
       <Card>
-      <div className="card">
+      <animated.div style={props} className="card">
         <div className='container'>
         <h3>{theVenue.address}</h3>
         <h3>{theVenue.summary}</h3>
         <Button onClick={() => {bookVenue(theVenue.id)} }>Book</Button>
       </div>
-      </div>
+      </animated.div>
       </Card>
     );
   };

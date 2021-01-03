@@ -9,6 +9,6 @@ export const darkTheme = {
   blue: "#0088a9",
   white: "#FFF",
   pink: "#F86782",
-  purple: "#282A36",
+  purple: "#c0b9dd",
   font: 'Montserrat',
 };

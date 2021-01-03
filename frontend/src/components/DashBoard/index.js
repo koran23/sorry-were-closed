@@ -6,6 +6,7 @@ import { fetchReservation } from "../../store/reservations";
 import { fetchVenues } from "../../store/venues";
 import { Link } from "react-router-dom";
 import Button from "../../styles/Button";
+import {useSpring, animated} from 'react-spring'
 
 const Profile = ({ theProfile }) => {
   return (
@@ -14,18 +15,29 @@ const Profile = ({ theProfile }) => {
         <h3>Location: {theProfile.location}</h3>
         <h3>About Me: {theProfile.bio}</h3>
       </div>
+      <Link to='/edit-profile/${loggedInUser.id}'><Button>Edit</Button></Link>
     </div>
   );
 };
 
 const Reservation = ({ theReservation }) => {
+  const props = useSpring({
+      opacity: 1,
+      from: { opacity: 0 },
+    })
   return (
+    
     <Card>
-      <div>
+      <animated.div style={props}>
         <div>
+          <h2>From:</h2>
+          <h3>{theReservation.start}</h3>
+          <h2>To:</h2>
+          <h3>{theReservation.end}</h3>
+          <h2>Address</h2>
           <h3>{theReservation.Venue.address}</h3>
         </div>
-      </div>
+      </animated.div>
     </Card>
   );
 };
@@ -69,9 +81,14 @@ const DashBoard = () => {
   //   // dispatch(getCurrentProfile(loggedInUser.id));
   //   console.log('fetching profile');
   // }, [dispatch, currentProfile]);
+  const props = useSpring({
+      opacity: 1,
+      from: { opacity: 0 },
+    })
 
   return (
-    <div>
+    
+    <animated.div style={props}>
       <h2></h2>
       <div>{loggedInUser && <h3>Welcome {loggedInUser.username}</h3>}</div>
       <br></br>
@@ -96,6 +113,8 @@ const DashBoard = () => {
       </div>
       <br></br>
       {!currentVenue && (
+        <>
+        <h2>Become an Owner</h2>
         <h3>
           Upload a venue!
           <Link to="/new-venue">
@@ -103,12 +122,13 @@ const DashBoard = () => {
             <Button>here</Button>
           </Link>
         </h3>
+        </>
       )}
       {currentVenue &&
         currentVenue.map((venue) => {
           return <Venue theVenue={venue} />;
         })}
-    </div>
+    </animated.div>
   );
 };
 

@@ -12,11 +12,12 @@ function CreateVenuePage() {
   const [totalOccupacy, setTotalOccupacy] = useState(0);
   const [summary, setSummary] = useState("");
   const [address, setAddress] = useState("");
-  const [hasKitchen, setHasKitchen] = useState(false);
-  const [hasAirCon, setHasAirCon] = useState(false);
-  const [hasHeating, setHasHeating] = useState(false);
-  const [hasInternet, setHasInternet] = useState(false);
-  const [pricePerDay, setPricePerDay] = useState(false);
+  const [typeOfVenue, setTypeOfVenue] = useState("");
+  const [hasKitchen, setHasKitchen] = useState('');
+  const [hasAirCon, setHasAirCon] = useState('');
+  const [hasHeating, setHasHeating] = useState('');
+  const [hasInternet, setHasInternet] = useState('');
+  const [pricePerDay, setPricePerDay] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ function CreateVenuePage() {
       totalOccupacy,
       summary,
       address,
+      typeOfVenue,
       hasKitchen,
       hasAirCon,
       hasHeating,
@@ -42,6 +44,7 @@ function CreateVenuePage() {
     <h2></h2>
     <form onSubmit={onSubmit}>
         <div>
+            <label>Total Occupacy</label>
             <input
             id='totalOccupacy'
             type='number'
@@ -51,6 +54,7 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>Summary</label>
             <input
             id='summary'
             type='text'
@@ -60,6 +64,7 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>Address</label>
             <input
             id='address'
             type='text'
@@ -69,6 +74,17 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>Type</label>
+            <input
+            id='type'
+            type='text'
+             value={typeOfVenue}
+            onChange={(e) => setTypeOfVenue(e.target.value)}
+            placeholder='type'
+            />
+        </div>
+        <div>
+            <label>This place has a kitchen:</label>
             <input
             id='hasKitchen'
             type='text'
@@ -78,6 +94,7 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>This place has air conditioning:</label>
             <input
             id='hasAirCon'
             type='text'
@@ -87,6 +104,7 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>This place has heating:</label>
             <input
             id='hasHeating'
             type='text'
@@ -96,6 +114,7 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>This place has a internet:</label>
             <input
             id='hasInternet'
             type='text'
@@ -105,6 +124,7 @@ function CreateVenuePage() {
             />
         </div>
         <div>
+            <label>Price (One day)</label>
             <input
             id='pricePerDay'
             type='number'

@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   padding: 0.4rem 1rem;
-  background: ${(props) => props.theme.red};
+  background: ${(props) => props.theme.blue};
   color: ${(props) => props.theme.white};
-  border: 1px solid ${(props) => props.theme.red};
+  border: 1px solid ${(props) => props.theme.blue};
   border-radius: 3px;
   letter-spacing: 1.1px;
 
