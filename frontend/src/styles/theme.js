@@ -6,9 +6,9 @@ export const darkTheme = {
   darkGrey: "#383838",
   black: "#121212",
   red: "#CC0000",
-  blue: "#3EA6FF",
+  blue: "#0088a9",
   white: "#FFF",
   pink: "#F86782",
   purple: "#282A36",
-  font: "Fira Sans",
+  font: 'Montserrat',
 };

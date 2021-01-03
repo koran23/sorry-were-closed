@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import styled from 'styled-components';
-import DashBoard from '../DashBoard/index';
+import styled from "styled-components";
+import DashBoard from "../DashBoard/index";
 
 const Bar = styled.div`
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -16,8 +16,26 @@ position: fixed;
   width: 100%;
   background: ${(props) => props.theme.grey};
   z-index: 99;
-  padding: 0.7rem 1.5rem;
+  padding: 10px 10%;
 
+  .list {
+    text-decoration: none;
+  }
+  .home {
+    cursor: pointer;
+  }
+  .nav_links {
+    list-style: none;
+  }
+  .nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+    transition: all 0.3s ease 0s;
+  }
+  .nav_links li:hover {
+    color: ${(props) => props.theme.blue};
+  }
+  
   input {
     width: 500px;
   }
@@ -87,37 +105,56 @@ function Navigation({ isLoaded }) {
 
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = ( 
-    <>
-      <NavLink exact to="/venue">
-        Venues
-      </NavLink>
-      <NavLink exact to="/dashboard">
-        DashBoard
-      </NavLink>
-    <ProfileButton user={sessionUser} /> 
-    </>
+    sessionLinks = (
+      <>
+      <div className='nav_links'>
+        <ul>
+          <li>
+            <NavLink exact to="/venue">
+              Venues
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/dashboard">
+              DashBoard
+            </NavLink>
+          </li>
+        </ul>
+        </div>
+        <div>
+          <ProfileButton user={sessionUser} />
+        </div>
+      </>
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+      <div className='nav_links'>
+        <ul>
+          <li>
+            <NavLink to="/login">Log In</NavLink>
+          </li>
+          <li>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </li>
+        </ul>
+        </div>
       </>
     );
   }
 
   return (
     <Bar>
-      <div className='nav_links'>
-      <NavLink exact to="/">
-        Home
-      </NavLink>
+      <ul>
+        <li className="list">
+          <NavLink className="home" exact to="/">
+            Home
+          </NavLink>
+        </li>
+      </ul>
       {isLoaded && sessionLinks}
-      </div>
     </Bar>
   );
 }
-
 
 export default Navigation;
