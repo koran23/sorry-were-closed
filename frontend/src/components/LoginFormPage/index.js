@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './LoginForm.css';
 import { StyledAuth } from "../SignupFormPage";
+import Button from '../../styles/Button';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -50,7 +51,11 @@ function LoginFormPage() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <Button type="submit">Log In</Button>
+      <br></br>
+      <label>Don't have an account?</label>
+      <br></br>
+      <Link to='/signup'><Button>Sign Up</Button></Link>
     </form>
     </StyledAuth>
   );

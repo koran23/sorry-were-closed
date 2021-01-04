@@ -36,7 +36,7 @@ function CreateVenuePage() {
     };
 
     dispatch(setVenue(payload));
-    history.push(`/dashboard`);
+    history.push(`/venue`);
   };
 
   return (

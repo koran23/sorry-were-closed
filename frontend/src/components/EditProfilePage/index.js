@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {createProfile, editProfile} from '../../store/profile';
+import { createProfile, editProfile } from "../../store/profile";
 import { useHistory } from "react-router-dom";
-import Button from '../../styles/Button';
+import Button from "../../styles/Button";
 import { StyledAuth } from "../SignupFormPage";
 
 function EditProfilePage() {
@@ -35,12 +35,11 @@ function EditProfilePage() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-
   const onSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
-        ...profile,
+      ...profile,
       userId: loggedInUser.id,
       bio,
       location,
@@ -50,37 +49,36 @@ function EditProfilePage() {
     // history.push(`/dashboard`);
   };
 
-
   return (
     <StyledAuth>
-    <h2></h2>
-    <form onSubmit={onSubmit}>
+      <h2></h2>
+      <form onSubmit={onSubmit}>
         <div>
-            <input
-            id='bio'
-            type='text'
+          <textarea
             value={bio}
             onChange={updateBio}
-            placeholder='bio'
-            />
+            placeholder="bio"
+            rows={3}
+            cols={25}
+          ></textarea>
         </div>
         <div>
-            <input
-            id='location'
-            type='text'
-             value={location}
+          <input
+            id="location"
+            type="text"
+            value={location}
             onChange={updateLocation}
-            placeholder='location'
-            />
+            placeholder="location"
+          />
         </div>
-        <Button onClick={openMenu} type='submit'>Update</Button>
-        {showMenu && (
-        <h3>Profile Updated!</h3>
-      )}
-    </form>
+        <Button onClick={openMenu} type="submit">
+          Update
+        </Button>
+        {showMenu && <h3>Profile Updated!</h3>}
+      </form>
       {/* <div>Hello {venueId}</div> */}
-      </StyledAuth>
-  )
+    </StyledAuth>
+  );
 }
 
 export default EditProfilePage;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 import styled from "styled-components";
+import Button from '../../styles/Button';
 
 export const StyledAuth = styled.div`
   width: 385px;
@@ -29,6 +30,16 @@ export const StyledAuth = styled.div`
   input {
     overflow: hidden;
     border-radius: 3px;
+    width: 100%;
+    padding: 0.6rem 1.2rem;
+    background: ${(props) => props.theme.black};
+    border: 1px solid ${(props) => props.theme.black};
+    margin-bottom: 1.5rem;
+    color: ${(props) => props.theme.primaryColor};
+  }
+
+  textarea {
+    overflow: hidden;
     width: 100%;
     padding: 0.6rem 1.2rem;
     background: ${(props) => props.theme.black};
@@ -137,9 +148,14 @@ function SignupFormPage() {
           />
         </label>
 
-        <div className="action input-group">
+        {/* <div className="action input-group"> */}
+
           <button type="submit">Sign Up</button>
-        </div>
+          <br></br>
+          <label>Already have an account?</label>
+          <br></br>
+          <Link to='/login'><Button>Login</Button></Link>
+        {/* </div> */}
       </form>
     </StyledAuth>
   );

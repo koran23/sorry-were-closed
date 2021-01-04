@@ -1,4 +1,4 @@
-
+import sign from '../../images/sign.jpg'
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
@@ -9,6 +9,7 @@ export const StyledHome = styled.div`
   width: 90%;
   margin: 0 auto;
   padding-bottom: 7rem;
+
 
   h3 {
     margin-bottom: 1rem;
@@ -46,17 +47,18 @@ const Home = () => {
         return state.session.user;
     });
     
-    return (
-        <StyledHome>
-        <div>
+    return ( 
+      <div>
+        <StyledHome >
+        <div >
             <div>
-                {/* <img src={picture} /> */}
                 <div>
                     <h1></h1>
                 </div>
             </div>
         </div>
         </StyledHome>
+        </div>
     );
 };
 

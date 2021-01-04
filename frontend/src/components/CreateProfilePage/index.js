@@ -35,8 +35,6 @@ function CreateProfilePage() {
     <form onSubmit={onSubmit}>
         <div>
             <input
-            id='bio'
-            type='textarea'
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             placeholder='bio'
