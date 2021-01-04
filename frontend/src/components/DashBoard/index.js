@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../../styles/card";
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentProfile } from "../../store/profile";
+import { getCurrentProfile, deleteCurrentProfile } from "../../store/profile";
 import { fetchReservation } from "../../store/reservations";
 import { fetchVenues } from "../../store/venues";
 import { Link } from "react-router-dom";
@@ -9,6 +9,9 @@ import Button from "../../styles/Button";
 import {useSpring, animated} from 'react-spring';
 import { modal, modalDiv } from '../../UI/Modal';
 import EditProfileButton from '../../components/EditProfileModal/index'
+import EditProfilePage from "../EditProfilePage";
+
+
 
 const Profile = ({ theProfile }) => {
   return (
@@ -17,7 +20,10 @@ const Profile = ({ theProfile }) => {
         <h3>Location: {theProfile.location}</h3>
         <h3>About Me: {theProfile.bio}</h3>
       </div>
+     
       <Link to='/edit-profile/${loggedInUser.id}'><Button>Edit</Button></Link>
+      
+
     </div>
   );
 };
@@ -33,9 +39,9 @@ const Reservation = ({ theReservation }) => {
       <animated.div style={props}>
         <div>
           <h2>From:</h2>
-          <h3>{theReservation.start}</h3>
+          <h3>{theReservation.startDate}</h3>
           <h2>To:</h2>
-          <h3>{theReservation.end}</h3>
+          <h3>{theReservation.endDate}</h3>
           <h2>Address</h2>
           <h3>{theReservation.Venue.address}</h3>
         </div>

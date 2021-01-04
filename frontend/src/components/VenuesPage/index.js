@@ -26,8 +26,17 @@ const bookVenue = (venueId) => {
       <Card>
       <animated.div style={props} className="card">
         <div className='container'>
+          <label>Place of Business:</label>
+        <h3>{theVenue.name}</h3>
+        <br></br>
+        <label>Address:</label>
         <h3>{theVenue.address}</h3>
+        <br></br>
+        <label>About this Venue:</label>
         <h3>{theVenue.summary}</h3>
+        <br></br>
+        <label>Best Suited:</label>
+        <h3>{theVenue.typeOfVenue}</h3>
         <Button onClick={() => {bookVenue(theVenue.id)} }>Book</Button>
       </div>
       </animated.div>
@@ -53,6 +62,7 @@ const bookVenue = (venueId) => {
     // setBands(response.data.bands);
     dispatch(fetchAllVenues());
   }, []);
+
 
   return (
     <div>

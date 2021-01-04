@@ -1,8 +1,7 @@
-import sign from '../../images/sign.jpg'
-import {Link} from "react-router-dom";
-import styled from 'styled-components';
-import {useSelector} from 'react-redux';
-
+import { Link } from "react-router-dom";
+// import sign from "../../images/unnamed.png";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 export const StyledHome = styled.div`
   padding: 1.3rem;
@@ -10,6 +9,16 @@ export const StyledHome = styled.div`
   margin: 0 auto;
   padding-bottom: 7rem;
 
+  .heading {
+    font-family: "Indie Flower";
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20%;
+  }
 
   h3 {
     margin-bottom: 1rem;
@@ -41,25 +50,31 @@ export const StyledHome = styled.div`
   }
 `;
 
-const Home = () => {
+// const sectionStyle = {
+//   backgroundImage: `url(${sign})`,
+//   backgroundPosition: "center",
+//   backgroundSize: "cover",
+//   backgroundRepeat: "no-repeat",
+// };
 
-    const loggedInUser = useSelector(state => {
-        return state.session.user;
-    });
-    
-    return ( 
-      <div>
-        <StyledHome >
-        <div >
-            <div>
-                <div>
-                    <h1></h1>
-                </div>
+const Home = () => {
+  const loggedInUser = useSelector((state) => {
+    return state.session.user;
+  });
+
+  return (
+    // <div style={sectionStyle}>
+      <StyledHome>
+        <div>
+          <div>
+            <div className="container">
+              <h1 className="heading">Sorry, we're closed</h1>
             </div>
+          </div>
         </div>
-        </StyledHome>
-        </div>
-    );
+      </StyledHome>
+    // </div>
+  );
 };
 
 export default Home;

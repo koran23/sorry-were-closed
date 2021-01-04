@@ -10,6 +10,7 @@ function CreateVenuePage() {
   const history = useHistory();
   const loggedInUser = useSelector((store) => store.session.user);
   const [totalOccupacy, setTotalOccupacy] = useState(0);
+  const [name, setName] = useState("");
   const [summary, setSummary] = useState("");
   const [address, setAddress] = useState("");
   const [typeOfVenue, setTypeOfVenue] = useState("");
@@ -24,6 +25,7 @@ function CreateVenuePage() {
 
     const payload = {
       ownerId: loggedInUser.id,
+      name,
       totalOccupacy,
       summary,
       address,
@@ -43,6 +45,16 @@ function CreateVenuePage() {
     <StyledAuth>
     <h2></h2>
     <form onSubmit={onSubmit}>
+        <div>
+            <label>Name</label>
+            <input
+            id='name'
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder='name'
+            />
+        </div>
         <div>
             <label>Total Occupacy</label>
             <input

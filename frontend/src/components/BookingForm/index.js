@@ -18,16 +18,17 @@ const BookingForm = () => {
     const payload = {
       userId: loggedInUser.id,
       venueId,
-      start,
-      end
+      startDate: start,
+      endDate: end
     };
 
     dispatch(createReservation(payload));
+    history.push(`/venue`);
     
-    let createdReservation;
-    if (createdReservation) {
-      history.push(`/`);
-  }
+  //   let createdReservation;
+  //   if (createdReservation) {
+  //     history.push(`/`);
+  // }
 }
   return (
     <>
@@ -36,7 +37,7 @@ const BookingForm = () => {
         <div>
             <input
             id='start-date'
-            type='date'
+            type='text'
             value={start}
             onChange={(e) => setStart(e.target.value)}
             placeholder='start'
@@ -45,7 +46,7 @@ const BookingForm = () => {
         <div>
             <input
             id='end-date'
-            type='date'
+            type='text'
              value={end}
             onChange={(e) => setEnd(e.target.value)}
             placeholder='end'

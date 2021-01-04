@@ -31,6 +31,14 @@ export const getCurrentProfile = (userId) => async (dispatch) => {
     dispatch(getProfile(res.data.profile));
   
 };
+export const deleteCurrentProfile = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/profile/me/${userId}`);
+  // const venues = await res.json();
+// debugger
+    dispatch(removeProfile());
+  
+  
+};
 export const editProfile = (userId, payload) => async (dispatch) => {
   const res = await fetch(`/api/profile/${userId}`, {
     method: "PUT",

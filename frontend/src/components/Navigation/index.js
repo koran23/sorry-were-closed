@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import styled from "styled-components";
-import DashBoard from "../DashBoard/index";
+
 
 const Bar = styled.div`
   position: fixed;
@@ -14,7 +14,7 @@ const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: ${(props) => props.theme.grey};
+  background: ${(props) => props.theme.bg};
   z-index: 99;
   padding: 10px 10%;
 
