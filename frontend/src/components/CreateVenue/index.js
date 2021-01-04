@@ -55,13 +55,15 @@ function CreateVenuePage() {
         </div>
         <div>
             <label>Summary</label>
-            <input
+            <textarea
             id='summary'
             type='text'
              value={summary}
             onChange={(e) => setSummary(e.target.value)}
             placeholder='summary'
-            />
+            rows={3}
+            cols={25}
+            ></textarea>
         </div>
         <div>
             <label>Address</label>

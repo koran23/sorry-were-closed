@@ -34,11 +34,13 @@ function CreateProfilePage() {
     <h2></h2>
     <form onSubmit={onSubmit}>
         <div>
-            <input
+            <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             placeholder='bio'
-            />
+            rows={3}
+            cols={25}
+            ></textarea>
         </div>
         <div>
             <input
