@@ -11,6 +11,7 @@ import {useSpring, animated} from 'react-spring'
 
 const VenuesPage = () => {
 const history = useHistory();
+const [search, setSearch] = useState('')
 
 
 const bookVenue = (venueId) => {
@@ -66,11 +67,11 @@ const bookVenue = (venueId) => {
 
   return (
     <div>
-      <h2></h2>
+      <h2>Where would you like to throw your event?</h2>
       {!currentVenues && <h3>Loading...</h3>}
       {currentVenues &&
         currentVenues.map((venue) => {
-          return <Venue theVenue={venue} />;
+          return <Venue theVenue={venue} />
         })}
     </div>
   );
