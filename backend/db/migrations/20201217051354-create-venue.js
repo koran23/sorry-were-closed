@@ -8,35 +8,31 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        type: Sequelize.STRING
+      },
       totalOccupacy: {
         type: Sequelize.INTEGER
       },
       summary: {
-        allowNull: false,
         type: Sequelize.TEXT
       },
       address: {
-        allowNull: false,
         type: Sequelize.TEXT
       },
       hasKitchen: {
-        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       hasAirCon: {
-        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       hasHeating: {
-        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       hasInternet: {
-        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       pricePerDay: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       ownerId: {
@@ -44,7 +40,7 @@ module.exports = {
         references: {model: 'Users'}
       },
       typeOfVenue: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

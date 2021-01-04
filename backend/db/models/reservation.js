@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Reservation = sequelize.define('Reservation', {
     userId: DataTypes.INTEGER,
     venueId: DataTypes.INTEGER,
-    startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE,
+    startDate: DataTypes.TEXT,
+    endDate: DataTypes.TEXT,
     total: DataTypes.INTEGER
   }, {});
   Reservation.associate = function(models) {

@@ -31,6 +31,8 @@ router.post(
   asyncHandler(async (req, res) => {
     const {
       ownerId,
+      name,
+      typeOfVenue,
       totalOccupacy,
       summary,
       address,
@@ -43,6 +45,8 @@ router.post(
 
     const venue = await Venue.create({
       ownerId,
+      name,
+      typeOfVenue,
       totalOccupacy,
       summary,
       address,
