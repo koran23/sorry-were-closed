@@ -14,7 +14,7 @@ const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: ${(props) => props.theme.bg};
+  background: ${(props) => props.theme.grey};
   z-index: 99;
   padding: 10px 10%;
 

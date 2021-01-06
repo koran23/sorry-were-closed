@@ -67,7 +67,6 @@ const bookVenue = (venueId) => {
 
   return (
     <div>
-      <h2>Where would you like to throw your event?</h2>
       <br></br>
       {!currentVenues && <h3>Loading...</h3>}
       {currentVenues &&
